@@ -23,6 +23,7 @@ func Producer(ch chan int, wg *sync.WaitGroup) {
 	}
 	close(ch)
 
+
 }
 
 func Consumer(inputC chan int, wg *sync.WaitGroup) {
@@ -45,18 +46,25 @@ func main() {
 
 	ch := make(chan int, 50)
 	var wg sync.WaitGroup
-
+	//ctx := context.Background()
+	//ctx, cancel := context.WithCancel(ctx)
 	wg.Add(3)
 	go Producer(ch, &wg)
 	go Consumer(ch, &wg)
 	go Consumer(ch, &wg)
 
-	stopC := make(chan os.Signal, 1)
 
 
-	wg.Wait()
-
+	stopC := make(chan os.Signal)
 	signal.Notify(stopC, syscall.SIGINT, syscall.SIGTERM)
-	fmt.Println("quit (%v)\n", <-stopC)
-	fmt.Println("主goroutine退出")
+
+	select {
+	case <-stopC:
+		return
+	default:
+		wg.Wait()
+	}
+
+	fmt.Println("主进程完成生产者消费者任务")
+
 }

@@ -2,19 +2,31 @@ package main
 
 import (
 	"fmt"
-	pubsub "golanglearning/new_project/for-gong-zhong-hao/Concurrent-practice/channel-mode/pubsub"
+	"golanglearning/new_project/for-gong-zhong-hao/Concurrent-practice/channel-mode/pubsub"
+	"os"
+	"os/signal"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 )
 
+/*
+	发布者订阅者模式：
+	消息生产者：publisher
+	消息消费者：subscriber
+	生产者和消费者是 M:N 的关系
+ */
 
 func main()  {
 
+	//
 	p := pubsub.NewPublisher(100*time.Second, 10)
 	defer p.Close()
 
+	// 订阅全部
 	all := p.Subscribe()
+	// 订阅字符串上有golang
 	golang := p.SubscribeTopic(func(v interface{}) bool {
 		if s, ok := v.(string); ok {
 			return strings.Contains(s, "golang")
@@ -48,8 +60,13 @@ func main()  {
 		p.Publish("hello golang")
 	}
 
+	stopC := make(chan os.Signal, 1)
+
 
 	wg.Wait()
+
+	signal.Notify(stopC, syscall.SIGINT, syscall.SIGTERM)
+	fmt.Println("收到控制台关闭通知", <-stopC)
 
 
 
