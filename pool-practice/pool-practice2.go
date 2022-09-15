@@ -1,4 +1,4 @@
-package main
+package pool_practice
 
 import (
 	"errors"
@@ -75,7 +75,7 @@ func (t *TaskObjPool) PutObj(obj *TaskObj) error {
 }
 
 
-func main() {
+func PoolPractice2() {
 
 	pool := NewTaskObjPool(10, false)
 

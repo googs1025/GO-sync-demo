@@ -1,4 +1,4 @@
-package main
+package discuss_goroutine
 
 import (
 	"fmt"
@@ -10,10 +10,10 @@ import (
 
 // https://mp.weixin.qq.com/s?__biz=MzUzMTUxMzYyNQ==&mid=2247483760&idx=1&sn=65632f35d4d0bf11e3f7f4c1d99e0549&chksm=fa402906cd37a010a63f0d961662513eb379d4ef00ec266bed886c0b52f31fc667e53c299ff1&cur_album_id=1870590690292793347&scene=190#rd
 
-func main() {
+func Discuss_Goroutine() {
 
 	//UnlimitedNumberofGoroutines()
-	//LimitedNumberofGoroutine1()
+	LimitedNumberofGoroutine1()
 	LimitedNumberofGoroutine2()
 
 }

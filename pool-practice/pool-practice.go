@@ -1,4 +1,4 @@
-package main
+package pool_practice
 
 import (
 	"fmt"
@@ -61,7 +61,7 @@ func (p *Pool) worker(task func()) {
 }
 
 
-func main() {
+func PoolPractice1() {
 
 	//pool := NewPool(128)
 	//pool.NewTask(func() {

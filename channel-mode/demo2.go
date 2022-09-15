@@ -1,4 +1,4 @@
-package main
+package channel_mode
 
 import (
 	"fmt"
@@ -18,7 +18,7 @@ import (
 	生产者和消费者是 M:N 的关系
  */
 
-func main()  {
+func ChanDemo2()  {
 
 	//
 	p := pubsub.NewPublisher(100*time.Second, 10)

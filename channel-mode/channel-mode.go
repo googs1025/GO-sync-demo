@@ -1,4 +1,4 @@
-package main
+package channel_mode
 
 import (
 	"context"
@@ -12,14 +12,14 @@ import (
 
 //
 
-func main() {
-	//WaitForResult()
-	//FanOut()
-	//WaitForTask1()
-	//pooling()
-	//drop()
+func ChannelMode() {
+	WaitForResult()
+	FanOut()
+	WaitForTask1()
+	pooling()
+	drop()
 	cancellation()
-	//FanOutSem()
+	FanOutSem()
 }
 
 

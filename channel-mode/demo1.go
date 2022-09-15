@@ -1,4 +1,4 @@
-package main
+package channel_mode
 
 import (
 	"fmt"
@@ -42,7 +42,7 @@ func Consumer(inputC chan int, wg *sync.WaitGroup) {
 }
 
 
-func main() {
+func ChanDemo1() {
 
 	ch := make(chan int, 50)
 	var wg sync.WaitGroup

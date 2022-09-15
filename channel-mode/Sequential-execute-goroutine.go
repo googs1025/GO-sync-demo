@@ -1,4 +1,4 @@
-package main
+package channel_mode
 
 import (
 	"fmt"
@@ -17,7 +17,7 @@ import (
 	注意，上面的channel都是struct{}类型的，整个过程中3个通道都没有传递数据，而是直接关闭来释放通道，让某些阻塞的goroutine继续执行下去。显然，这里的x、y、z的作用都是"信号通道"，用来传递消息。
  */
 
-func main() {
+func Sequential_execute_goroutine() {
 
 	ch1 := make(chan struct{})
 	ch2 := make(chan struct{})
