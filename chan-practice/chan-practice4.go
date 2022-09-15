@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
@@ -13,14 +13,14 @@ import (
  */
 
 const (
-	Max = 100000
-	NumReceivers = 10
-	NumSenders = 100
+	Max4 = 100000
+	NumReceivers4 = 10
+	NumSenders4 = 100
 )
 
-var wgReceivers sync.WaitGroup
+var wgReceivers4 sync.WaitGroup
 
-func main() {
+func chanpractice4() {
 
 	rand.Seed(time.Now().UnixNano())
 
@@ -45,10 +45,10 @@ func main() {
 	}()
 
 	// 生产者
-	for i := 0; i < NumSenders; i++ {
+	for i := 0; i < NumSenders4; i++ {
 		go func(id string) {
 			for {
-				value := rand.Intn(Max)
+				value := rand.Intn(Max4)
 				//
 				if value == 0 {
 					select {
@@ -67,17 +67,17 @@ func main() {
 	}
 
 	// 消费者
-	for i := 0; i < NumReceivers; i++ {
+	for i := 0; i < NumReceivers4; i++ {
 		// 消费者需要用waitgroup兜底
-		wgReceivers.Add(1)
-		go func(id string, wgReceivers *sync.WaitGroup) {
-			defer wgReceivers.Done()
+		wgReceivers4.Add(1)
+		go func(id string, wgReceivers4 *sync.WaitGroup) {
+			defer wgReceivers4.Done()
 			for {
 				select {
 				case <-stopCh:
 					return
 				case value := <-dataCh:
-					if value == Max-1 {
+					if value == Max4-1 {
 						select {
 						case toStop <- "receiver#" + id:
 						default:
@@ -89,10 +89,10 @@ func main() {
 				}
 			}
 
-		}(strconv.Itoa(i), &wgReceivers)
+		}(strconv.Itoa(i), &wgReceivers4)
 	}
 
-	wgReceivers.Wait()
+	wgReceivers4.Wait()
 	fmt.Println("stopped by", stoppedBy)
 
 

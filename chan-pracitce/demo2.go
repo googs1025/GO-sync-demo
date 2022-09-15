@@ -1,13 +1,12 @@
-package main
+package chan_practice
 
 import (
-	"fmt"
 	"math/rand"
 )
 
 // 建立多个Producer，并用chan传递data，再用一个函数 for-select merge起来。
 
-func Producer1() chan int {
+func Producer1Demo2() chan int {
 	ch := make(chan int, 10)
 	go func() {
 		for {
@@ -17,7 +16,7 @@ func Producer1() chan int {
 	return ch
 }
 
-func Producer2() chan int {
+func Producer2Demo2() chan int {
 	ch := make(chan int, 10)
 	go func() {
 		for {
@@ -28,15 +27,15 @@ func Producer2() chan int {
 
 }
 
-func MergeProducer() chan int {
+func MergeProducerDemo2() chan int {
 
 	ch := make(chan int, 30)
 	go func() {
 		for {
 			select {
-			case v1 := <-Producer1():
+			case v1 := <-Producer1Demo2():
 				ch <- v1
-			case v2 := <-Producer2():
+			case v2 := <-Producer2Demo2():
 				ch <- v2
 			}
 		}
@@ -47,13 +46,12 @@ func MergeProducer() chan int {
 
 }
 
-func main() {
-
-	ch := MergeProducer()
-	for i := 0; i < 200; i++ {
-		fmt.Println(i, <-ch)
-	}
-
-
-
-}
+//
+//func main() {
+//
+//	ch := MergeProducerDemo2()
+//	for i := 0; i < 200; i++ {
+//		fmt.Println(i, <-ch)
+//	}
+//
+//}

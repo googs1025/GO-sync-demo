@@ -1,7 +1,6 @@
-package main
+package chan_practice
 
 import (
-	"fmt"
 	"math/rand"
 )
 
@@ -21,11 +20,11 @@ func Producer() chan int {
 
 }
 
-func main() {
-
-	ch := Producer()
-	for i := 0; i < 10; i++ {
-		fmt.Println(<-ch)
-	}
-
-}
+//func main() {
+//
+//	ch := Producer()
+//	for i := 0; i < 10; i++ {
+//		fmt.Println(<-ch)
+//	}
+//
+//}

@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"log"
@@ -13,7 +13,7 @@ import (
 
 
 
-func main() {
+func chantalkmore() {
 	rand.Seed(time.Now().UnixNano())
 	log.SetFlags(0)
 

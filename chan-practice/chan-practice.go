@@ -1,11 +1,11 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
 	"sync"
 )
 
-func main() {
+func chanpractice() {
 
 	valueC := make(chan string)
 	var wg sync.WaitGroup

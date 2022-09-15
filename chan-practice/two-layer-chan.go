@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 // https://www.cnblogs.com/f-ck-need-u/p/9994496.html
 
-func main() {
+func twolayerchan() {
 	cc := make(chan chan int)
 
 	times := 5

@@ -1,4 +1,4 @@
-package main
+package chan_practice
 
 import (
 	"fmt"
@@ -70,16 +70,16 @@ func MergeProducer(done chan struct{}) chan int {
 
 }
 
-func main() {
-	doneC := make(chan struct{})
-	ch := MergeProducer(doneC)
-	for i := 0; i < 200; i++ {
-		fmt.Println(i, <-ch)
-	}
-	doneC <- struct{}{}
-	fmt.Println("主goroutine退出")
-
-
-
-}
+//func main() {
+//	doneC := make(chan struct{})
+//	ch := MergeProducer(doneC)
+//	for i := 0; i < 200; i++ {
+//		fmt.Println(i, <-ch)
+//	}
+//	doneC <- struct{}{}
+//	fmt.Println("主goroutine退出")
+//
+//
+//
+//}
 

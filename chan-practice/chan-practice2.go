@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
@@ -36,9 +36,9 @@ func (t *Task) run() error {
 	return nil
 }
 
-func worker(in <-chan *Task, workID int, wg *sync.WaitGroup) {
+func worker(in <-chan *Task, workID int, wg2 *sync.WaitGroup) {
 
-	defer wg.Done()
+	defer wg2.Done()
 
 	for v := range in {
 		fmt.Printf("Worker%d: recv a request: TaskID:%d, JobID:%d\n", workID, v.ID, v.JobID)
@@ -53,16 +53,16 @@ func worker(in <-chan *Task, workID int, wg *sync.WaitGroup) {
 
 const WorkerNum = 3
 
-func main() {
+func chanpractice2() {
 
-	var wg sync.WaitGroup
+	var wg2 sync.WaitGroup
 	// 放入的工作对列
 	taskqueue := make(chan *Task, 10)
 
-	wg.Add(3)
+	wg2.Add(3)
 	for workID := 0; workID <= WorkerNum; workID++ {
 		// 启的工作goroutine
-		go worker(taskqueue, workID, &wg)
+		go worker(taskqueue, workID, &wg2)
 	}
 
 	// 生产者的所有数据
@@ -75,7 +75,7 @@ func main() {
 	}
 	// 生产后记得要关闭！
 	close(taskqueue)
-	wg.Wait()
+	wg2.Wait()
 
 
 }

@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 
 // https://www.cnblogs.com/f-ck-need-u/p/9986335.html
 
-func main() {
+func selectpractice() {
 	ch1 := make(chan int, 5)
 	ch2 := make(chan int, 5)
 	stopC := make(chan struct{})

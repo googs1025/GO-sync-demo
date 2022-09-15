@@ -1,4 +1,4 @@
-package main
+package chanpractice
 
 import (
 	"fmt"
@@ -20,9 +20,9 @@ import (
 const Max = 10000
 const NumSenders = 100
 
-var wgReceivers sync.WaitGroup
+var wgReceivers3 sync.WaitGroup
 
-func main() {
+func chanpractice3() {
 
 	rand.Seed(time.Now().UnixNano())
 
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	// 消费者
-	wgReceivers.Add(1)
+	wgReceivers3.Add(1)
 	go func(dataC chan int, wgReceivers *sync.WaitGroup) {
 		// 遍历
 		defer wgReceivers.Done()
@@ -63,9 +63,9 @@ func main() {
 			fmt.Println("value:", value)
 		}
 
-	}(dataC, &wgReceivers)
+	}(dataC, &wgReceivers3)
 
-	wgReceivers.Wait()
+	wgReceivers3.Wait()
 
 
 }

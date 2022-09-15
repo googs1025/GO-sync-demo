@@ -1,7 +1,6 @@
-package main
+package chanpractice
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
