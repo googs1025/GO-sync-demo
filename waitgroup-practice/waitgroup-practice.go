@@ -1,4 +1,4 @@
-package main
+package waitgroup_practice
 
 import (
 	"fmt"
@@ -9,9 +9,9 @@ import (
 
 var responseChan = make(chan string, 15)
 
-func httpGet(url string, limiter chan bool, wg *sync.WaitGroup) {
+func httpGet(url string, limiter chan bool, wg1 *sync.WaitGroup) {
 
-	defer wg.Done()
+	defer wg1.Done()
 
 	time.Sleep(time.Second * 3)
 	responseChan <- fmt.Sprintf("Hello Go %s", url)
@@ -26,23 +26,23 @@ func response() {
 }
 
 
-func main() {
+func WaitGroupPractice1() {
 
 	start := time.Now()
 	fmt.Println("start:", start)
 	go response()
 
-	var wg sync.WaitGroup
+	var wg1 sync.WaitGroup
 	limiter := make(chan bool, 10)
 
 	for i := 0; i < 100; i++ {
-		wg.Add(1)
+		wg1.Add(1)
 		limiter <-true
 		url := "url:" + strconv.Itoa(i)
-		go httpGet(url, limiter, &wg)
+		go httpGet(url, limiter, &wg1)
 	}
 
-	wg.Wait()
+	wg1.Wait()
 
 	fmt.Println("执行完毕，主goroutine退出")
 

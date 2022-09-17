@@ -1,4 +1,4 @@
-package main
+package error_practice
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 	3. context 信号传播：如果子任务 goroutine 中有循环逻辑，则可以添加 ctx.Done 逻辑，此时通过 context 的取消信号，提前结束子任务执行。
  */
 
-func main(){
+func ErrorPractice1(){
 	TryUseWaitGroup()
 	TryUseErrGroup()
 	ErrGroupUseContext()

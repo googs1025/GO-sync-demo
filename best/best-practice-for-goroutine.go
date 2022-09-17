@@ -1,4 +1,4 @@
-package main
+package best
 
 import (
 	"fmt"
@@ -10,9 +10,9 @@ import (
 // Go并发最佳实践
 // https://mp.weixin.qq.com/s/66vI_Zq9Oeb_2IJOga7_qg
 
-func main() {
+func Test() {
 	ServerUse()
-	//NetUse()
+	NetUse()
 
 }
 
@@ -99,7 +99,7 @@ func broadcastSendMsgBad(msg string, addrs []string) chan error {
 		wg.Add(1)
 		go func(addr string) {
 			defer wg.Done()
-			errChan <-SendMsg(msg, addr)
+			errChan <- SendMsg(msg, addr)
 			fmt.Println("done 一个任务")
 		}(addr)
 	}
@@ -143,7 +143,7 @@ func broadcastSendMsg(msg string, addrs []string) chan error {
 		wg.Add(1)
 		go func(addr string) {
 			defer wg.Done()
-			errChan <-SendMsg(msg, addr)
+			errChan <- SendMsg(msg, addr)
 			fmt.Println("done 一个任务")
 
 		}(addr)
@@ -176,7 +176,7 @@ func broadcastSendMsgGood(msg string, addrs []string) chan error {
 			// 不断循环 监听不同chan
 			for {
 				select {
-				case errChan <-SendMsg(msg, addr):
+				case errChan <- SendMsg(msg, addr):
 					fmt.Println("done 一个任务")
 				case <- stopChan:
 					fmt.Println("task done")

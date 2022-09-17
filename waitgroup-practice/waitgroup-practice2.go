@@ -1,4 +1,4 @@
-package main
+package waitgroup_practice
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 // go开发当中用到了并发协程多任务，同时收集返回多任务结果，go 协程没有直接返回，只能通过chan返回收集
 
 
-func httpGet(url string, response chan string, limiter chan bool, wg *sync.WaitGroup) {
+func httpGet1(url string, response chan string, limiter chan bool, wg *sync.WaitGroup) {
 	//计数器-1
 	defer wg.Done()
 	//coding do business
@@ -45,7 +45,7 @@ func collect(urls []string) []string {
 		wg.Add(1)
 		//并发控制 10
 		limiter <- true
-		go httpGet(url, response, limiter, wg)
+		go httpGet1(url, response, limiter, wg)
 	}
 	//发送任务
 	wg.Wait()
@@ -57,7 +57,7 @@ func collect(urls []string) []string {
 }
 
 
-func main() {
+func WaitGroupPractice2() {
 	var urls []string
 	for i := 0; i < 100; i++ {
 		url := "url: " + strconv.Itoa(i)

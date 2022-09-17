@@ -1,8 +1,8 @@
-package main
+package cron_practice
 
 import (
 	"fmt"
-	"github.com/robfig/cron"
+	"github.com/robfig/cron/v3"
 	"sync"
 	"time"
 )
@@ -30,7 +30,7 @@ func TestCron(wg *sync.WaitGroup) {
 
 }
 
-func main()  {
+func CronTask1()  {
 
 	var wg sync.WaitGroup
 

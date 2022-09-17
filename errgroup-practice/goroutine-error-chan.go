@@ -1,4 +1,4 @@
-package main
+package error_practice
 
 import (
 	"errors"
@@ -15,7 +15,7 @@ import (
 
 var wg sync.WaitGroup
 
-func main() {
+func ErrorPractice() {
 	num := 5
 	TryUseChanAndErr(num)
 }

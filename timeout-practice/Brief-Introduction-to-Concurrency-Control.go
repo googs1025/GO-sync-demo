@@ -1,4 +1,4 @@
-package main
+package timeout_practice
 
 import (
 	"context"
@@ -15,9 +15,9 @@ import (
  */
 
 
-func main() {
-	//WaitgroupTry()
-	//ChannelExitTry()
+func ConcourrencyPractice() {
+	WaitgroupTry()
+	ChannelExitTry()
 	ContextTry()
 	
 }

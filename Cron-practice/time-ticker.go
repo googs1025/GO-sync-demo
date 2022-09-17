@@ -1,4 +1,4 @@
-package main
+package cron_practice
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func TimeTicker() {
 	input := make(chan interface{})
 
 	go func(ch chan interface{}) {

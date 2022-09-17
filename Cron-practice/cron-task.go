@@ -1,4 +1,4 @@
-package main
+package cron_practice
 
 import (
 	"github.com/antlabs/timer"
@@ -38,7 +38,7 @@ func Schedule(timer timer.Timer, duration time.Duration, callbackFunc func()) {
 }
 
 
-func main() {
+func CronTask() {
 
 	tm := timer.NewTimer()
 	defer tm.Stop()

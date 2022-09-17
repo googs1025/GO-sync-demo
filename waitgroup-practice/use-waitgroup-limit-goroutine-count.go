@@ -1,11 +1,9 @@
-package main
+package waitgroup_practice
 
 import (
 	"fmt"
 	"net/http"
 	"sync"
-	"time"
-
 	//"time"
 
 )
@@ -64,7 +62,7 @@ func (wg *WaitGroup) PendingCount() int64 {
 	return int64(len(wg.pool))
 }
 
-func main() {
+func WaitGroupPractice3() {
 	urls := []string{
 		"https://www.a.com/",
 		"https://www.b.com",

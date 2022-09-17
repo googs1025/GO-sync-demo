@@ -1,4 +1,4 @@
-package main
+package timeout_practice
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 
 // https://mp.weixin.qq.com/s/1OoeDckI9Kg2yDLZ_hRRTA
 
-func main() {
+func ContextPractice() {
 	fmt.Println("start")
 	//someHanderCancel()
 	someHanderTimeout()

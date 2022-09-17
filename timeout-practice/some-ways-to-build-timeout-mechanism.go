@@ -1,4 +1,4 @@
-package main
+package timeout_practice
 
 import (
 	"context"
@@ -147,7 +147,7 @@ func TryTimeout5() {
 
 
 
-func main() {
+func SomeWaysTimeout() {
 
 	//TryTimeout2()
 

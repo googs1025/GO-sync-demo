@@ -1,4 +1,4 @@
-package main
+package timeout_practice
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 	因为Tick()也是在等待结束的时候发送数据到通道，所以它的返回值是一个channel，从这个channel中可读取每次等待完时的时间点。
  */
 
-func main() {
+func SelectTimeout() {
 	//UseTimeAfter1()
 	//UseTimeTick1()
 	UseTimeTick2()
