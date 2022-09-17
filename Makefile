@@ -18,10 +18,10 @@ vet: ## Run go vet
 	@go vet ${PKG_LIST}
 
 test: ## Run unittests
-	@go test -v ./... ${PKG_LIST}
+	@go test -v ./...
 
 test-coverage: ## Run tests with coverage
-	@go test -short -coverprofile cover.out -covermode=atomic ${PKG_LIST}
+	@go test -short -coverprofile cover.out -covermode=atomic ./...
 	@cat cover.out >> coverage.txt
 
 build: dep ## Build the binary file
